@@ -1,12 +1,133 @@
 <!DOCTYPE html>
-<html>
-  <head>
-	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<title>WebCat</title>
-  </head>
-  <body>
-	  <center>
-	<button onclick="window.open('cd.html')">按钮</button>
-	  </center>
-  </body>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浔可</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 谷歌字体（书法+宋体） -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            /* 核心书法字体 */
+            .font-xunke {
+                font-family: 'Ma Shan Zheng', cursive;
+            }
+            /* 辅助宋体 */
+            .font-classic {
+                font-family: 'Noto Serif SC', serif;
+            }
+            /* 轻量文字渐变 */
+            .text-gradient-soft {
+                background-clip: text;
+                -webkit-background-clip: text;
+                color: transparent;
+                background-image: linear-gradient(120deg, #2c3e50, #4a6990);
+            }
+            /* 水墨质感背景层 */
+            .bg-ink {
+                background: linear-gradient(180deg, #f9f7f4 0%, #e8e5e0 50%, #d9d4cc 100%);
+                background-attachment: fixed;
+            }
+        }
+
+        /* 核心文字悬浮动效（轻量不夸张） */
+        .xunke-core {
+            transition: all 0.6s ease;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+        }
+        .xunke-core:hover {
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        /* 装饰性线条动画（淡入） */
+        .line-animate {
+            animation: lineFade 2s ease-in-out forwards;
+            opacity: 0;
+            transform: scaleX(0);
+            transform-origin: center;
+        }
+        @keyframes lineFade {
+            to {
+                opacity: 1;
+                transform: scaleX(1);
+            }
+        }
+
+        /* 文字淡入动画 */
+        .text-fade {
+            animation: textFade 2.5s ease-in-out forwards;
+            opacity: 0;
+        }
+        @keyframes textFade {
+            to {
+                opacity: 1;
+            }
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: 4px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            width: 192px;
+            box-sizing: border-box;
+        }
+        /* 纯色按钮 */
+            /* 边框按钮 */
+        .btn-border {
+            border: 1px solid #4f75ae;
+            color: #374151;
+            background: transparent;
+        }
+        .btn-border:hover {
+            background: #363f52;
+        }
+    </style>
+</head>
+<body class="bg-ink min-h-screen flex flex-col items-center justify-center">
+    <!-- 页面核心容器 -->
+    <div class="container mx-auto px-4 py-20 text-center">
+        <!-- 装饰性细线条 -->
+        <div class="w-24 md:w-48 h-0.5 bg-gray-400/30 line-animate mb-10"></div>
+        
+        <!-- 核心文字「浔可」 -->
+        <h1 class="font-xunke text-[clamp(4rem,12vw,8rem)] font-normal text-gradient-soft xunke-core text-fade" style="animation-delay: 0.5s">
+            浔可nb666
+        </h1>
+        
+        <!-- 意境副标题 -->
+         <centre>
+        <class= " bg-gray-50 flex items-center justify-center min-h-screen ">
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+        <a href="eweima.jpg" class="btn btn-border">二维码</a>
+    </div>
+    </centre>
+    </class>
+        
+        <!-- 装饰性细线条 -->
+        <div class="w-24 md:w-48 h-0.5 bg-gray-400/30 line-animate" style="animation-delay: 1.5s"></div>
+        
+       
+    </div>
+
+    <!-- 页脚（极简） -->
+    
+    
+    <!-- 极简JS：仅做页面加载的基础交互（可选） -->
+    <script>
+        // 页面滚动时，核心文字轻微缩放
+        window.addEventListener('scroll', () => {
+            const coreText = document.querySelector('.xunke-core');
+            const scrollY = window.scrollY;
+            coreText.style.transform = `translateY(-2px) scale(${1 - scrollY / 2000})`;
+        });
+    </script>
+</body>
 </html>
